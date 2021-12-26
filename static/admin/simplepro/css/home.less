@@ -1,0 +1,146 @@
+.home-body {
+  padding: 20px;
+  height: 100%;
+  overflow: auto;
+  margin-bottom: 20px;
+
+  .quick-wrap {
+    background-color: white;
+    border-radius: 5px;
+    border-width: 2px;
+
+    .icon {
+      background-color: white;
+    }
+
+    .card-name {
+      font-weight: 300;
+      font-size: 14px;
+    }
+
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: #fff;
+      box-shadow: 0px 0px 10px rgba(#333333, 0.2);
+    }
+  }
+
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+    float: none;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 5px;
+  border-width: 2px;
+
+  .title {
+    border-bottom: 1px solid #e8eaec;
+    padding: 14px 16px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #17233d;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+.charts {
+  .col {
+    width: 25%;
+    float: left;
+
+    .wrap {
+      margin: 10px;
+      background-color: white;
+    }
+
+    .body {
+      padding: 10px;
+    }
+
+    .data {
+      font-size: 30px;
+      margin: 10px auto;
+    }
+
+    .bottom {
+      border-top: 1px solid rgb(232, 234, 236);
+      padding-top: 10px;
+      color: rgb(81, 90, 110);
+      font-weight: 300;
+      margin: 10px;
+      padding-bottom: 10px;
+    }
+
+    .body {
+      min-height: 100px;
+    }
+
+    .title {
+      border-bottom: 1px solid rgb(232, 234, 236);
+      padding: 14px 16px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 14px;
+      color: rgb(23, 35, 61);
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+
+      .date {
+        position: absolute;
+        right: 10px;
+        height: 22px;
+        line-height: 22px;
+        font-size: 12px;
+        vertical-align: middle;
+        opacity: 1;
+        cursor: pointer;
+        margin: 2px 4px 2px 0px;
+        padding: 0px 8px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(232, 234, 236);
+        border-image: initial;
+        border-radius: 3px;
+        background: rgb(247, 247, 247);
+        overflow: hidden;
+      }
+    }
+  }
+
+  &:after {
+    display: block;
+    clear: both;
+    float: none;
+    content: '';
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .charts {
+    .col {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .charts {
+    .col {
+      width: 100%;
+    }
+  }
+}

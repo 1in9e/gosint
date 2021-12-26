@@ -1,0 +1,86 @@
+version: "2"
+services:
+  db:
+    image: mariadb:10.4
+    environment:
+      MYSQL_DATABASE: gosint
+      MYSQL_ROOT_PASSWORD: gosint
+      MYSQL_USER: gosint
+      MYSQL_PASSWORD: gosint
+      TZ: Asia/Shanghai
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/log:/var/log/mysql
+      - ./mysql/conf:/etc/mysql/conf.d
+    restart: always
+
+  web:
+    build: .
+    environment:
+      DEBUG: 'false'
+      TZ: Asia/Shanghai
+    volumes:
+      - .:/app
+      - ./supervisor/supervisord.conf:/etc/supervisord.conf
+      - ./logs:/var/logs/
+    depends_on:
+      - redis
+      - db
+      - rabbitmq
+    restart: always
+  nginx:
+    image: nginx
+    ports:
+      - "8001:80"
+      - "5555:5555"
+    volumes:
+    - ./static:/usr/share/nginx/html/static
+    - ./nginx/log/:/var/log/nginx/
+    - ./nginx/conf:/etc/nginx/conf.d
+    depends_on:
+      - web
+    restart: always
+
+  rabbitmq:
+    image: rabbitmq:3.8.3-management
+    restart: always
+    volumes:
+      - ./rabbitmq/data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: gosintuser
+      RABBITMQ_DEFAULT_PASS: gosintpass
+      RABBITMQ_DEFAULT_VHOST: gosint
+      TZ: Asia/Shanghai
+    ports:
+      - "25672:5672"
+      - "15672:15672"
+
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - "26379:6379"
+    volumes:
+      - ./redis/data:/data
+    command: ["redis-server", "--appendonly", "yes", "--requirepass","gosintpass"]
+    environment:
+      - TZ=Asia/Shanghai
+      - REDIS_PASSWORD=gosintpass
+      - ALLOW_EMPTY_PASSWORD=no
+
+  client:
+   build: ./client
+   environment:
+     DEBUG: 'False'
+     BROKER: 'amqp://gosintuser:gosintpass@rabbitmq:5672/gosint'
+     BACKEND: 'redis://:gosintpass@redis:6379/2'
+     SERVER_URL: 'http://web:8000'
+     TZ: Asia/Shanghai
+     C_FORCE_ROOT: 'true'
+   restart: always
+   depends_on:
+     - rabbitmq
+     - redis
+     - web
+   volumes:
+     - ./client/:/app

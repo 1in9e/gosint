@@ -1,0 +1,66 @@
+@import "base";
+
+@primary: #515a6e !important;
+@color: #515a6e;
+
+@menu-color: hsla(0, 0%, 100%, .7) !important;
+@menu-background: #191a23 !important;
+
+@menu-color-hover: #FFF;
+@menu-background-hover: #000000;
+
+@menu-title-color: hsla(0, 0%, 100%, .7);
+@menu-title-background-color: #191a23;
+
+@menu-title-color-hover: #FFF;
+@menu-title-background-color-hover: #000000;
+
+@navbar-color: #515a6e;
+@navbar-background: #fff;
+
+@vip-color: #c79c6d !important;
+
+.logo-wrap {
+  //color: #fff !important;
+  color: @vip-color;
+
+  background-color: #191a23 !important;
+  padding-left: 20px;
+  text-align: center;
+}
+
+.menu .el-menu .is-active {
+  color: @vip-color;
+}
+
+.menu {
+  *:not(span,i) {
+    background-color: #191a23 !important;
+  }
+}
+
+.navbar {
+
+  .el-button:focus, .el-button:hover {
+    color: rgba(@color, 0.7) !important;
+  }
+
+}
+
+.logo-wrap {
+  font-size: 20px;
+  font-weight: 300;
+  color: white;
+  height: 65px;
+  line-height: 65px;
+  border-bottom: 1px solid #101117;
+  background: #191a23;
+}
+
+.menu .fa, .menu .fas, .menu .far, .menu .fab {
+  font-size: 14px;
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  color: #FFF;
+}

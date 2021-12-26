@@ -1,0 +1,53 @@
+# Headers to include with all HTTP request
+header:
+  - 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.15(0x17000f31) NetType/WIFI Language/zh_CN'
+
+# Directory based template execution
+templates:
+  - nuclei-templates/
+  - my-nuclei-templates/
+
+# Tags based template execution
+#tags: exposures,cve
+
+# Templates Filters
+#tags: exposures,cve
+#author: geeknik,pikpikcu,dhiyaneshdk
+#severity: critical,high,medium
+
+# Template Allowlist
+#include-tags: fuzz # Tag based inclusion (allows to overwrite nuclei-ignore list)
+#include-templates: # Template based inclusion (allows to overwrite nuclei-ignore list)
+#  - vulnerabilities/
+#  - misconfiguration/
+#  - cnvd/
+#  - file/
+
+# Template Denylist
+exclude-tags: tech,dos,dns,ns,iot,info # Tag based exclusion
+exclude-templates: # Template based exclusion
+  - nuclei-templates/technologies/
+  - nuclei-templates/iot/
+  - nuclei-templates/misconfiguration/http-missing-security-headers.yaml
+  - nuclei-templates/misconfiguration/phpmyadmin-setup.yaml
+  - nuclei-templates/dns/dns-waf-detect.yaml
+  - nuclei-templates/network/smtp-detection.yaml
+  - nuclei-templates/network/ftp-weak-credentials.yaml
+  - nuclei-templates/vulnerabilities/generic/cors-misconfig.yaml
+  - nuclei-templates/vulnerabilities/other/twig-php-ssti.yaml
+  - nuclei-templates/exposures/configs/exposed-gitignore.yaml
+  - nuclei-templates/miscellaneous/addeventlistener-detect.yaml
+  - nuclei-templates/miscellaneous/display-via-header.yaml
+  - nuclei-templates/miscellaneous/detect-options-method.yaml
+  - nuclei-templates/miscellaneous/email-extractor.yaml
+  - nuclei-templates/miscellaneous/clientaccesspolicy.yaml
+  - nuclei-templates/miscellaneous/tabnabbing-check.yaml
+  - nuclei-templates/misconfiguration/shell-history.yaml
+  - nuclei-templates/exposures/configs/package-json.yaml
+  - nuclei-templates/token-spray/
+  - nuclei-templates/exposures/files/crossdomain-xml.yaml
+
+# Rate Limit configuration
+rate-limit: 200
+bulk-size: 60
+concurrency: 60

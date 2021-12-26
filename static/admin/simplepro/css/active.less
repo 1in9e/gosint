@@ -1,0 +1,103 @@
+body {
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+.active {
+  text-align: center;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+
+  .error-icon {
+    display: inline-block;
+    width: 72px;
+    height: 72px;
+    border-radius: 50px;
+    background-color: #ed4013;
+
+    i {
+      color: white;
+      font-size: 50px;
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+
+  .el-alert {
+    margin-top: 50px;
+  }
+
+  .el-alert__content {
+    margin: 20px auto;
+  }
+
+  .description {
+    text-align: left;
+  }
+
+  .pay-type {
+    text-align: left;
+  }
+
+  .card-box {
+    .active {
+      border-color: #4C9AF2 !important;
+    }
+
+    .card {
+      float: left;
+      display: table;
+      margin-right: 10px;
+      margin-top: 10px;
+      border: 1px #D6D6D6 solid;
+      border-radius: 4px;
+      width: 197px;
+      background-color: #fff;
+      position: relative;
+      cursor: pointer;
+
+      .name, .amount, .day {
+        display: table-cell;
+      }
+
+      .name {
+        width: 56px;
+        height: 60px;
+        line-height: 60px;
+        color: #707070;
+        text-align: center;
+        border-radius: 5px 0 0 5px;
+        background: #ededed;
+        font-size: 16px;
+      }
+
+      .amount {
+        font-size: 24px;
+        color: #F5622E;
+        line-height: initial;
+        text-align: left;
+        padding-left: 5px;
+        width: 78px;
+      }
+    }
+
+    &:after {
+      display: block;
+      content: "";
+      float: none;
+      clear: both;
+    }
+  }
+
+  .pay-tips {
+    font-size: 12px;
+    margin: 10px;
+    color: #666;
+  }
+
+}

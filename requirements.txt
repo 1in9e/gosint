@@ -1,0 +1,12 @@
+Django==3.2.4
+celery==4.4.7
+vine==1.3.0
+gunicorn
+mysqlclient
+flower==0.9.7
+django-simpleui
+django-import-export
+redis
+IPy
+demjson==2.2.4
+ipaddress

@@ -1,0 +1,123 @@
+html,
+body {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  background: #f1f4f6;
+  font-size: 13px;
+}
+[v-cloak] {
+  display: none;
+}
+th {
+  font-weight: 500;
+}
+table {
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  color: rgba(0, 0, 0, 0.65);
+}
+.el-table thead {
+  color: rgba(0, 0, 0, 0.85);
+}
+#app {
+  padding: 20px;
+}
+#app .el-form-item {
+  margin-bottom: 5px;
+}
+.el-breadcrumb {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.panel {
+  margin: 10px auto;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.panel .panel-body {
+  padding: 20px;
+}
+.paginator {
+  text-align: center;
+  margin: 10px auto;
+}
+.toolbar {
+  padding-bottom: 10px;
+}
+.toolbar .left {
+  margin-top: 10px;
+  float: left;
+}
+.toolbar .right {
+  margin-top: 10px;
+  float: right;
+}
+.toolbar:after {
+  display: block;
+  content: "";
+  float: none;
+  clear: both;
+}
+.toolbar .el-button .el-dropdown {
+  font-size: inherit;
+}
+.search-input {
+  display: block;
+  float: left;
+  margin-right: 10px;
+  width: auto;
+}
+.default-header th {
+  background-color: #f5f7fa;
+}
+.table-tips {
+  margin-bottom: 10px;
+}
+table a,
+table a:visited {
+  color: #3f9eff;
+  text-decoration: none;
+}
+.el-form-item__content {
+  line-height: inherit;
+}
+.mobile-menus .el-drawer__header {
+  margin-bottom: 0px !important;
+}
+#app::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 4px;
+}
+#app::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 5px rgba(123, 123, 123, 0.2);
+  background: #7d7d7d;
+}
+#app::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width: 800px) {
+  #app {
+    padding: 0px;
+  }
+  .panel .panel-body {
+    padding: 3px;
+  }
+}
+.toolbar .el-button {
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+}
+.toolbar .el-button-group .el-button {
+  box-shadow: none;
+}

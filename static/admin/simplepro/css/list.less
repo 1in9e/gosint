@@ -1,0 +1,151 @@
+html, body {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background: #f1f4f6;
+  font-size: 13px;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+th {
+  font-weight: 500;
+}
+
+table {
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  color: rgba(0, 0, 0, .65);
+}
+
+.el-table thead {
+  color: rgba(0, 0, 0, .85);
+}
+
+#app {
+  padding: 20px;
+
+  .el-form-item {
+    margin-bottom: 5px;
+  }
+}
+
+.el-breadcrumb {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.panel {
+  margin: 10px auto;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+
+  .panel-body {
+    padding: 20px;
+
+  }
+}
+
+.paginator {
+  text-align: center;
+  margin: 10px auto;
+}
+
+.toolbar {
+  padding-bottom: 10px;
+
+  .left {
+    margin-top: 10px;
+    float: left;
+  }
+
+  .right {
+    margin-top: 10px;
+    float: right;
+  }
+
+  &:after {
+    display: block;
+    content: "";
+    float: none;
+    clear: both;
+  }
+
+  .el-button {
+    .el-dropdown {
+      font-size: inherit;
+    }
+  }
+}
+
+.search-input {
+  display: block;
+  float: left;
+  margin-right: 10px;
+  width: auto;
+}
+
+.default-header {
+  th {
+    background-color: #f5f7fa;
+  }
+}
+
+.table-tips {
+  margin-bottom: 10px;
+}
+
+table {
+
+  a, a:visited {
+    color: rgb(63, 158, 255);
+    //color: inherit;
+    text-decoration: none;
+  }
+}
+
+.el-form-item__content {
+  line-height: inherit;
+}
+
+.mobile-menus {
+  .el-drawer__header {
+    margin-bottom: 0px !important;
+  }
+}
+
+#app, html, body {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(123, 123, 123, 0.2);
+    background: #7d7d7d;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #app {
+    padding: 0px;
+  }
+
+  .panel .panel-body {
+    padding: 3px;
+  }
+}
+
+@import "button";

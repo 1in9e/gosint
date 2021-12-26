@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<title>render demo</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>-->
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.1.0/axios.min.js"></script>
+<script src="./render.umd.js"></script>
+
+<div id="app">
+    <bawa-render :settings="settings" :data="data"></bawa-render>
+</div>
+<script>
+    console.log(render)
+    new Vue({
+        data: {
+            data: {
+                components: [],
+                settings: {}
+            }
+        },
+        created() {
+            const self = this;
+            axios.get('./BawaData.json').then(res => {
+                self.data = res;
+            }).catch(err => console.error(e));
+        }
+    }).$mount('#app');
+</script>

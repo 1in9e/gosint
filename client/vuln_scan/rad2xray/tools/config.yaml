@@ -1,0 +1,264 @@
+version: 4.0
+
+parallel: 45                      # 漏洞探测的 worker 数量，可以简单理解为同时有 30 个 POC 在运行
+
+# 全局 http 发包配置
+# 更多解释见 https://docs.xray.cool/#/configration/http
+http:
+  proxy: ""                             # socks5://8.8.8.8:60080 漏洞扫描时使用的代理，如: http://127.0.0.1:8080。 如需设置多个代理，请使用 proxy_rule 或自行创建上层代理socks5://119.45.165.175:60044
+  proxy_rule: []                        # 漏洞扫描使用多个代理的配置规则, 具体请参照文档
+  dial_timeout: 6                       # 建立 tcp 连接的超时时间
+  read_timeout: 12                      # 读取 http 响应的超时时间，不可太小，否则会影响到 sql 时间盲注的判断
+  max_conns_per_host: 50                # 同一 host 最大允许的连接数，可以根据目标主机性能适当增大
+  enable_http2: false                   # 是否启用 http2, 开启可以提升部分网站的速度，但目前不稳定有崩溃的风险
+  fail_retries: 0                       # 请求失败的重试次数，0 则不重试
+  max_redirect: 5                       # 单个请求最大允许的跳转数
+  max_resp_body_size: 2097152           # 最大允许的响应大小, 默认 2M
+  max_qps: 600                          # 每秒最大请求数
+  allow_methods:                        # 允许的请求方法
+  - HEAD
+  - GET
+  - POST
+  - PUT
+  - PATCH
+  - DELETE
+  - OPTIONS
+  - CONNECT
+  - TRACE
+  - MOVE
+  - PROPFIND
+  headers:
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36
+    # Cookie: key=value
+
+# 漏洞探测的插件配置
+# 更多解释见 https://docs.xray.cool/#/configration/plugins
+plugins:
+  baseline:
+    enabled: false
+    detect_cors_header_config: false     # 检查 cors 相关配置
+    detect_server_error_page: false      # 检查服务器错误信息
+    detect_system_path_leak: true       # 检查响应是否包含系统路径泄露
+    detect_outdated_ssl_version: false  # 检查 ssl 版本问题
+    detect_http_header_config: false    # 检查 http 安全相关 header 是否配置
+    detect_cookie_httponly: false       # 检查 set-cookie 时是否设置 http only
+    detect_china_id_card_number: false  # 检查响应是否存在身份证号
+    detect_china_phone_number: false    # 检查响应是否存在电话号码
+    detect_china_bank_card: false       # 检查响应是否存在银行卡号
+    detect_private_ip: true            # 检查响应是否包含内网 ip
+  brute-force:
+    enabled: false
+    username_dictionary: ""             # 自定义用户名字典, 为空将使用内置 TOP10, 配置后将与内置字典**合并**
+    password_dictionary: ""             # 自定义密码字典，为空将使用内置 TOP100, 配置后将与内置字典**合并**
+  cmd-injection:
+    enabled: true
+  crlf-injection:
+    enabled: true
+  dirscan:
+    enabled: false
+    depth: 1                            # 检测深度，定义 http://t.com/a/ 深度为 1, http://t.com/a 深度为 0
+    dictionary: ""                      # 自定义检测字典, 配置后将与内置字典**合并**
+  fastjson:
+    enabled: true
+  jsonp:
+    enabled: false
+  path-traversal:
+    enabled: true
+  phantasm:
+    enabled: true
+    depth: 1
+    exclude_poc: []                       # 排除哪些 poc, 支持 glob 语法, 如: /home/poc/*thinkphp* 或 poc-yaml-weblogic*
+    local_poc: []                       # 加载本地的 poc, 支持 glob 语法, 如： /home/poc/*
+  redirect:
+    enabled: true
+  shiro:
+    enabled: true
+    cookie_name: rememberMe             # 默认使用哪个 shiro cookie name
+    aes_key: ['lxuEtAWbv+SgUOXREM+zrA==', 'ZUdsaGJuSmxibVI2ZHc9PQ==', '2AvVhdDFCVdfdfDFAdag==', 'HeUZ/LvgkO7nsa18ZyVxWQ==', '1QWLxg+NYmxraMoxAXu/Iw==', 'fCq+/xW488hMTCE+cmJ3FF==', 'FL9HL9Yu5bVUJ0PDU1ySvg==', '9FvVhtFLUs0KnA3Kprsdyg==', 'V2hhdCBUaGUgSGVsbAAAAA==', 'c2hvdWtlLXBsdXMuMjAxNg==', 'ZmFsYWRvLnh5ei5zaGlybw==', 'Us0KvVhTeasAm43KFLAeng==', 'r0e3c16IdVkouZgk1TKVMg==', '4WCZSJyqdUQsije93aQIRg==', '6AvVhmFLUs0KTA3Kprsdag==', 'cGhyYWNrY3RmREUhfiMkZA==', '4AvVhdsgUs0F563SDFAdag==', '2adsfasdqerqerqewradsf==', '2AvVhdsgUs0FSA3SaFAdfg==', 'sgIQrqUVxa1OZRRIK3hLZw==', 'Q01TX0JGTFlLRVlfMjAxOQ==', 'Kyjwds5ZLEBUhA4a9O1DhQ==', '5AvVhmFLUs0KTA3Kprsdag==', '3JvYhmBLUs0ETA5Kprsdag==', '7AvVhmFLUs0KTA3Kprsdag==', '4AvVhmFLUs0KTA3Kpr3sd3ag==', '1tC/xrDYs8ey+sa3emtiYw==', 'MTIzNDU2Nzg5MGFiY2RlZg==', 'TGMPe7lGO/Gbr38QiJu1/w==', '4AvVhmFLUs0KTA3Kprsdag==', 'IduElDUpDDXE677ZkhhKnQ==', 'A+kWR7o9O0/G/W6aOGesRA==', 'b2EAAAAAAAAAAAAAAAAAAA==', 'pbnA+Qzen1vjV3rNqQBLHg==', '0AvVhmFLUs0KTA3Kprsdag==', 'zSyK5Kp6PZAAjlT+eeNMlg==', 'AztiX2RUqhc7dhOzl1Mj8Q==', 'pyyX1c5x2f0LZZ7VKZXjKO==', 'Is9zJ3pzNh2cgTHB4ua3+Q==', 'KU471rVNQ6k7PQL4SqxgJg==', 'HoTP07fJPKIRLOWoVXmv+Q==', '66v1O8keKNV3TTcGPK1wzg==', 'fdCEiK9YvLC668sS43CJ6A==', 'YWJjZGRjYmFhYmNkZGNiYQ==', 'sHdIjUN6tzhl8xZMG3ULCQ==', '2AvVCXsxUs0FSA7SYFjdQg==', '2AvVhdsgUs0FSA3SDFAder==', 'cGljYXMAAAAAAAAAAAAAAA==', 'A7UzJgh1+EWj5oBFi+mSgw==', 'FjbNm1avvGmWE9CY2HqV75==', 'GAevYnznvgNCURavBhCr1w==', 'eXNmAAAAAAAAAAAAAAAAAA==', 'YVd4dmRtVjViM1UlM0QIdn==', 'a69ec781563b1a5d791f7b2bdd117a36', 'wrjUh2ttBPQLnT4JVhriug==', 'U3ByaW5nQmxhZGUAAAAAAA==', 'CrownKey==a12d/dakdad', 'm0/5ZZ9L4jjQXn7MREr/bw==', 'bXRvbnMAAAAAAAAAAAAAAA==', 'MTIzNDU2NzgxMjM0NTY3OA==', 'ikB3y6O9BpimrZLB3rca0w==', 'i45FVt72K2kLgvFrJtoZRw==', '2AvVhdsgUsOFSA3SDFAdag==', '6GvVhmFLUs0KTA3Kprsdag==', 'tiVV6g3uZBGfgshesAQbjA==', '6Df5w6FRPCVQV0dhhUrZZ', '2A2V+RFLUs+eTA3Kpr+dag==', 'ertVhmFLUs0KTA3Kprsdag==', '1AvVhdsgUs0FSA3SDFAdag==', 'rPNqM6uKFCyaL10AK51UkQ==', 'Ymx1ZXdoYWxlAAAAAAAAAA==', '3qDVdLawoIr1xFd6ietnsg==', '3AvVhMFLIs0KTA3Kprsdag==', 'M2djA70UBBUPDibGZBRvrA==', 'YTM0NZomIzI2OTsmIzM0NTueYQ==', 'bya2HkYo57u6fWh5theAWw==', 'RmluZExvdmVy', 'ZUdsaGJuSmxibVI2ZHc9PQ', 'XTx6CKLo/SdSgub+OPHSrw==', 'UGlzMjAxNiVLeUVlXiEjLw==', '2AvHhdsgUs0F0A3SDFAPa==', '3AvVhmFLUs0KTA3Kprsdag==', 'kPH+bIxk5D2deZiIxcabaA==', "7gzYfKjTASKdsai43ds=='", 'GHxH6G3LFh8Zb3NwoRgfFA==', 'U0hGX2d1bnMAAAAAAAAAAA==', 'LafjwUgsDlNmnet47IJQWg==', '2AvHhdsgUs0F0A3SDFAPa*==', 'HOlg7NHb9potm0n5s4ic0Q==', 'ZGdmdwAAAAAAAAAAAAAAAA', 'fCq+/xW488hMTCD+cmJ3aQ==', 'Cj6LnKZNLEowAZrdqyH/Ew==', 'l8cc6d2xpkT1yFtLIcLHCg==', 'w793pPq5ZVBKkj8OhV4KaQ==', 'GsHaWo4m1eNbE0kNSMULhg==', '8BvVhmFLUs0KTA3Kprsdag==', 'duhfin37x6chw29jsne45m==', 'RVZBTk5JR0hUTFlfV0FPVQ==', 'QAk0rp8sG0uJC4Ke2baYNA==', 'd2ViUmVtZW1iZXJNZUtleQ==', '4AvVhmFLUs5KTA1Kprsdag==', 'ZjQyMTJiNTJhZGZmYjFjMQ==', '6ZmI6I2j3Y+R1aSn5BOlAA==', '3rvVhmFLUs0KAT3Kprsdag==', 'QF5HMyZAWDZYRyFnSGhTdQ==', 'FP7qKJzdJOGkzoQzo2wTmA==', 'AsfawfsdfaAasdWWW==', 'vXP33AonIp9bFwGl7aT7rA==', '3AvVhdAgUs0FSA4SDFAdBg==', 'yNeUgSzL/CfiWw1GALg6Ag==', 'YWdlbnRAZG1AMjAxOHN3Zg==', 'aG91c2Vob3VzZWhvdXNlMg==', 'SkZpbmFsQmxhZGUAAAAAAA==', 'Z3VucwAAAAAAAAAAAAAAAA==', '3AvVhdAgUs1FSA4SDFAdBg==', 'm0@5ZZ9L4jjQXn7MREp^b^7I', 'xVmmoltfpb8tTceuT5R7Bw==', 'O4pdf+7e+mZe8NyxMTPJmQ==', 'wGiHplamyXlVB11UXWol8g==', 's0KTA3mFLUprK4AvVhsdag==', 'QVN1bm5uJ3MgU3Vuc2l0ZQ==', 'Y1JxNSPXVwMkyvES/kJGeQ==', 'nhNhwZ6X7xzgXnnZBxWFQLwCGQtJojL3', 'pMvTx48hLt+/C8D+cM5vR==', 'GhrF5zLfq1Dtadd1jlohhA==', 'fsHspZw/92PrS3XrPW+vxw==', 'zzrsUhmFL9Ks0KTLUsvV4AAdzz==', 'MPdCMZ9urzEA50JDlDYYDg==', '2itfW92XazYRi5ltW0M2yA==', 'wyLZMDifwq3sW1vhhHpgKA==', 'bWljcm9zAAAAAAAAAAAAAA==', 'lT2UvDUmQwewm6mMoiw4Ig==', 'kPH+bIxk5D2deZiIxcacaA==', 'rtemgns419ccg6ddpupfm', 'dG91dGlhbzEyMzQ1Ng==', '2AvVhdUs0FSA3SDFAdag==', '3qDVdLawoIr1xFd6ietnwg==', 'U3BAbW5nQmxhZGUAAAAAAA==', 'AvVhmFLUs0KTA3Kprsdag==', 'WWFuemhlbmcg5Lil5q2jAA==', '4AvVhmFLUsOKTA3Kprsdag==', '9AVvhnFLuS3KTV8KprsdAg==', '6NfXkC7YVCV5DASIrEm1Rg==', 'NsZXjXVklWPZwOfkvk6kUA==', '4AvVhmFLUs0KTA3Kprseaf==', 'asdsa--543532%^%$&%&', 'Jt3C93kMR9D5e8QzwfsiMw==', 'NoIw91X9GSiCrLCF03ZGZw==', 'R29yZG9uV2ViAAAAAAAAAA==', 'FJoQCiz0z5XWz2N2LyxNww==', 'fssgaegsfas==', 'zIiHplamyXlVB11UXWol8g==', 'oPH+bIxk5E2enZiIxcqaaA==', 'iycgIIyCatQofd0XXxbzEg==', 'qQFtSnnj/sx7vu51ixAyEQ==', 'YystomRZLMUjiK0Q1+LFdw==', 'aU1pcmFjbGVpTWlyYWNsZQ==', 'yeAAo1E8BOeAYfBlm4NG9Q==', '5RC7uBZLkByfFfJm22q/Zw==', 'OUHYQzxQ/W9e/UjiAGu6rg==', 'f/SY5TIve5WWzT4aQlABJA==', 'NGk/3cQ6F5/UNPRh8LpMIg==', 'WuB+y2gcHRnY2Lg9+Aqmqg==', 'YWJjZGVm', 'ClLk69oNcA3m+s0jIMIkpg==', 'B9rPF8FHhxKJZ9k63ik7kQ==', 'Z3VucwACAOVAKALACAADSA==', 'W2h5bXNdY29va2llQA==', '2AvVhdsgUs0FSA3SDFAdag==', 'dG91dGlhbzEyMzQ1NQ==', 'a2VlcE9uR29pbmdBbmRGaQ==', '2AvVhdsgERdsSA3SDFAdag==', '7gzYfKjTASKdsai43ds==', '25BsmdYwjnfcWmnhAciDDg==', 'c2hpcm9fYmF0aXMzMgAAAA==', '2cVtiE83c4lIrELJwKGJUw==', '3Av2hmFLAs0BTA3Kprsd6E==', 'OY//C4rhfwNxCQAQCrQQ1Q==', '2AvVidsaUSofSA3SDFAdog==', 'dWZkbXBhc3MxMjM0NTY3OA==', 'a3dvbmcAAAAAAAAAAAAAAA==', '6Zm+6I2j5Y+R5aS+5ZOlAA==', 'bXdrXl9eNjY2KjA3Z2otPQ==', '9Jo0hLz8XhDpPsOOYOnSUA==', 'bWluZS1hc3NldC1rZXk6QQ==', 'sBv2t3okbdm3U0r2EVcSzB==', '3AvVhmFLUs0KTA3KaTHGFg==', '6ZmI6I2j5Y+R5aSn5ZOlAA==', 'ZAvph3dsQs0FSL3SDFAdag==', '4AvVhm2LUs0KTA3Kprsdag==', '4BvVhmFLUs0KTA3Kprsdag==', '5oiR5piv5p2h5ZK46bG8IQ==', '4AvVhmFLUs0KTA3KAAAAAA==', 'MzVeSkYyWTI2OFVLZjRzZg==', 'bTBANVpaOUw0ampRWG43TVJFcF5iXjdJ', 'XgGkgqGqYrix9lI6vxcrRw==', 'bT3ovvD7RfGDc0BXO5ORyA==', '4AvVhmFLUs0TTA3Kprsdag==', 'kPv59vyqzj00x11LXJZTjJ2UHW48jzHN', 'c+3hFGPjbgzGdrC+MHgoRQ==', '1t43gns419h1g61dpnpfe', '4AvVhmFLUsOKTA3Kprsdg==', '2AvVhmFLUs0KTA3Kprsdag==', '9AvVhmFLUs0KTA3Kprsdag==', 'Bf7MfkNR0axGGptozrebag==', '5aaC5qKm5oqA5pyvAAAAAA==', 'WkhBTkdYSUFPSEVJX0NBVA==', 'UFz8ias3ZKYzku/ZUuG9yw==', 'HWrBltGvEZc14h9VpMvZWw==', 'P7sWnbtUYuVxgVFvFlHpvQ==', 'htsoft123456789', 'QUxQSEFNWVNPRlRCVUlMRA==', 'SrpFBcVD89eTQ2icOD0TMg==', 'SDKOLKn2J1j/2BHjeZwAoQ==', 'empodDEyMwAAAAAAAAAAAA==', 'bGVhcm4gc2hpcm8gcXVpY2tseSBhbmQgc3lzdGVtYXRpY2FsbHk=', 'kPH+bIxk5D2deZiIxcaaaA==', 'k3+XHEg6D8tb2mGm7VJ3nQ==', 'Z3h6eWd4enklMjElMjElMjE=', 'WcfHGU25gNnTxTlmJMeSpw==', 'GhMXBsUK/105DRCJvsCt/A==', 'LEGEND-CAMPUS-CIPHERKEY==', '8AvVhdsgUs0FSA3SDFAdag==', '9Ami6v2G5Y+r5aPnE4OlBB==', 'AF05JAuyuEB1ouJQ9Y9Phg==', 'ZWvohmPdUsAWT3=KpPqda', '8AvVhmFLUs0KTA3Kprsdag==', 'hBlzKg78ajaZuTE0VLzDDg==', '5AvVhmFLUS0ATA4Kprsdag==', '4rvVhmFLUs0KAT3Kprsdag==', '5AvVhCsgUs0FSA3SDFAdag==', 'cmVtZW1iZXJNZQAAAAAAAA==', 'QDFCnfkLUs0KTA3Kprsdag==', 'Rb5RN+LofDWJlzWAwsXzxg==', 'ZGdmdwAAAAAAAAAAAAAAAA==', 'Z3VucwAAAAAAAAAAAAABBB==', 'YI1+nBV//m7ELrIyDHm6DQ==', 's2SE9y32PvLeYo+VGFpcKA==', '6Df5w6FRPCVQV0dhhUrZ*Z', 'lt181dcQVz/Bo9Wb8ws/Cg==', 'L7RioUULEFhRyxM7a2R/Yg==', '5J7bIJIV0LQSN3c9LPitBQ==', 'mIccZhQt6EBHrZIyw1FAXQ==', 'YnlhdnMAAAAAAAAAAAAAAA==', 'ZnJlc2h6Y24xMjM0NTY3OA==', 'Us0KvVhTprsAm43KFLAdag==']                         # 自定义 shiro key，配置后将与内置 100 key 做合并
+  sqldet:
+    enabled: true
+    boolean_based_detection: true       # 是否检测布尔盲注
+    error_based_detection: true         # 是否检测报错注入
+    time_based_detection: true          # 是否检测时间盲注
+    use_comment_in_payload: true       # 在 payload 中使用 or, 慎用！可能导致删库！
+    detect_sqli_in_cookie: true         # 是否检查在 cookie 中的注入
+  ssrf:
+    enabled: true
+  struts:
+    enabled: true
+  thinkphp:
+    enabled: true
+    detect_thinkphp_sqli: true          # 检查 thinkphp 特定语法的 sqli 注入漏洞
+  upload:
+    enabled: true
+  xss:
+    enabled: true
+    detect_xss_in_cookie: false          # 是否探测入口点在 cookie 中的 xss
+    ie_feature: false                   # 是否扫描仅能在 ie 下利用的 xss
+  xxe:
+    enabled: true
+
+# 反连平台配置，更多解释见 https://docs.xray.cool/#/configration/reverse
+# 注意: 默认配置为禁用反连平台，这是无法扫描出依赖反连平台的漏洞，这些漏洞包括 fastjson，ssrf 以及 poc 中依赖反连的情况等
+reverse:
+  db_file_path: ""                      # 反连平台数据库文件位置, 这是一个 KV 数据库
+  token: ""                             # 反连平台认证的 Token, 独立部署时不能为空
+  http:
+    enabled: false
+    listen_ip: 127.0.0.1
+    listen_port: "8080"
+    ip_header: "X-Forwarded-For"                       # 在哪个 http header 中取 ip，为空代表从 REMOTE_ADDR 中取
+  dns:
+    enabled: false
+    listen_ip: 127.0.0.1
+    domain: "gosi.top"                          # DNS 域名配置
+    is_domain_name_server: false        # 是否修改了域名的 ns 为反连平台，如果是，那 nslookup 等就不需要指定 dns 了
+    resolve:                            # DNS 静态解析规则
+    - type: A # A, AAAA, TXT 三种
+      record: ns1
+      value: 127.0.0.1
+      ttl: 60
+  client:
+    remote_server: true                # 是否是独立的远程 server，如果是要在下面配置好远程的服务端地址
+    http_base_url: "http://"                   # 默认将根据 ListenIP 和 ListenPort 生成，该地址是存在漏洞的目标反连回来的地址, 当反连平台前面有反代、绑定域名、端口映射时需要自行配置
+    dns_server_ip: ""                   # 和 http_base_url 类似，实际用来访问 dns 服务器的地址
+
+
+# 被动代理配置
+# 更多解释见 https://docs.xray.cool/#/configration/mitm
+mitm:
+  ca_cert: ./ca.crt                     # CA 根证书路径
+  ca_key: ./ca.key                      # CA 私钥路径
+  basic_auth:                           # 基础认证的用户名密码
+    username: ""
+    password: ""
+  allow_ip_range: []                    # 允许的 ip，可以是 ip 或者 cidr 字符串
+  restriction:                          # 代理能够访问的资源限制, 以下各项为空表示不限制
+    hostname_allowed: []                # 允许访问的 Hostname，支持格式如 t.com、*.t.com、1.1.1.1、1.1.1.1/24、1.1-4.1.1-8
+    hostname_disallowed:                # 不允许访问的 Hostname，支持格式如 t.com、*.t.com、1.1.1.1、1.1.1.1/24、1.1-4.1.1-8
+    - '*google*'
+    - '*github*'
+    - '*hackerone*'
+    - '*microsoft.com'
+    - 'sec.baidu.com'
+    - 'pos.baidu.com'
+    - 'security.*'
+    - '*.qpic.cn'
+    - '*.youdao.com'
+    - '*.apple.com'
+    - '*chaitin*'
+    - '*xray.cool'
+    - '*fofa.so'
+    - '*shodan.io'
+    - '*.rubiconproject.com'
+    - 'crt.sh'
+    - '*rapiddns.io*'
+    - '*doubleclick.net'
+    port_allowed: []                    # 允许访问的端口, 支持的格式如: 80、80-85
+    port_disallowed: []                 # 不允许访问的端口, 支持的格式如: 80、80-85
+    path_allowed: []                    # 允许访问的路径，支持的格式如: test、*test*
+    path_disallowed: []                 # 不允许访问的路径, 支持的格式如: test、*test*
+    query_key_allowed: []               # 允许访问的 Query Key，支持的格式如: test、*test*
+    query_key_disallowed: []            # 不允许访问的 Query Key, 支持的格式如: test、*test*
+    fragment_allowed: []                # 允许访问的 Fragment, 支持的格式如: test、*test*
+    fragment_disallowed: []             # 不允许访问的 Fragment, 支持的格式如: test、*test*
+    post_key_allowed: []                # 允许访问的 Post Body 中的参数, 支持的格式如: test、*test*
+    post_key_disallowed: []             # 不允许访问的 Post Body 中的参数, 支持的格式如: test、*test*
+  queue:
+    max_length: 6000                    # 队列长度限制, 也可以理解为最大允许多少等待扫描的请求, 请根据内存大小自行调整
+  proxy_header:
+    via: ""                             # 是否为代理自动添加 Via 头
+    x_forwarded: false                  # 是否为代理自动添加 X-Forwarded-{For,Host,Proto,Url} 四个 http 头
+  upstream_proxy: ""                    # 为 mitm 本身配置独立的代理
+
+# 基础爬虫配置
+# 更多解释见 https://docs.xray.cool/#/configration/basic-crawler
+basic-crawler:
+  max_depth: 0                          # 最大爬取深度， 0 为无限制
+  max_count_of_links: 0                 # 本次爬取收集的最大链接数, 0 为无限制
+  allow_visit_parent_path: false        # 是否允许爬取父目录, 如果扫描目标为 t.com/a/且该项为 false, 那么就不会爬取 t.com/ 这级的内容
+  restriction:                          # 爬虫的允许爬取的资源限制, 为空表示不限制。爬虫会自动添加扫描目标到 Hostname_allowed。
+    hostname_allowed: []                # 允许访问的 Hostname，支持格式如 t.com、*.t.com、1.1.1.1、1.1.1.1/24、1.1-4.1.1-8
+    hostname_disallowed:                # 不允许访问的 Hostname，支持格式如 t.com、*.t.com、1.1.1.1、1.1.1.1/24、1.1-4.1.1-8
+    - '*google*'
+    - '*github*'
+    - '*hackerone*'
+    - '*microsoft.com'
+    - 'sec.baidu.com'
+    - 'pos.baidu.com'
+    - 'security.*'
+    - '*.qpic.cn'
+    - '*.youdao.com'
+    - '*.apple.com'
+    - '*chaitin*'
+    - '*xray.cool'
+    - '*.yuque.com'
+    port_allowed: []                    # 允许访问的端口, 支持的格式如: 80、80-85
+    port_disallowed: []                 # 不允许访问的端口, 支持的格式如: 80、80-85
+    path_allowed: []                    # 允许访问的路径，支持的格式如: test、*test*
+    path_disallowed: []                 # 不允许访问的路径, 支持的格式如: test、*test*
+    query_key_allowed: []               # 允许访问的 Query Key，支持的格式如: test、*test*
+    query_key_disallowed: []            # 不允许访问的 Query Key, 支持的格式如: test、*test*
+    fragment_allowed: []                # 允许访问的 Fragment, 支持的格式如: test、*test*
+    fragment_disallowed: []             # 不允许访问的 Fragment, 支持的格式如: test、*test*
+    post_key_allowed: []                # 允许访问的 Post Body 中的参数, 支持的格式如: test、*test*
+    post_key_disallowed: []             # 不允许访问的 Post Body 中的参数, 支持的格式如: test、*test*
+  basic_auth:                           # 基础认证信息
+    username: ""
+    password: ""
+
+# 子域名扫描配置，配置解释见 https://docs.xray.cool/#/configration/subdomain
+# 注意：该功能仅限高级版用户使用
+subdomain:
+  max_parallel: 30                      # 子域名探测的并发度
+  allow_recursion: false                # 是否允许递归探测, 开启后，扫描完一级域名后，会自动将一级的每个域名作为新的目标
+  max_recursion_depth: 3                # 最大允许的递归深度, 3 表示 3 级子域名 仅当 allow_recursion 开启时才有意义
+  web_only: false                       # 结果中仅显示有 web 应用的, 没有 web 应用的将被丢弃
+  ip_only: false                        # 结果中仅展示解析出 IP 的，没有解析成功的将被丢弃
+  servers:                              # 子域名扫描过程中使用的 DNS Server
+  - 8.8.8.8
+  - 8.8.4.4
+  - 223.5.5.5
+  - 223.6.6.6
+  - 114.114.114.114
+  sources:
+    brute:
+      enabled: true
+      main_dict: ""                     # 一级大字典路径，为空将使用内置的 TOP 30000 字典
+      sub_dict: ""                      # 其他级小字典路径，为空将使用内置过的 TOP 100 字典
+    httpfinder:
+      enabled: true                     # 使用 http 的一些方式来抓取子域名，包括 js, 配置文件，http header 等等
+    dnsfinder:
+      enabled: true                     # 使用 dns 的一些错误配置来找寻子域名，如区域传送（zone transfer)
+    certspotter:                        # 下面的通过 api 获取的了
+      enabled: true
+    crt:
+      enabled: true
+    hackertarget:
+      enabled: true
+    qianxun:
+      enabled: true
+    rapiddns:
+      enabled: true
+    sublist3r:
+      enabled: true
+    threatminer:
+      enabled: true
+    virusTotal:
+      enabled: true
+    alienvault:
+      enabled: true
+    bufferover:
+      enabled: true
+    fofa:
+      enabled: true
+      email: ""
+      key: ""
+    ip138:
+      enabled: true
+    myssl:
+      enabled: true
+    riskiq:
+      enabled: false
+      user: ""
+      key: ""

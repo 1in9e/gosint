@@ -1,0 +1,27 @@
+[
+  {
+    "name": "组",
+    "icon": "fa fa-circle",
+    "url": "/admin/auth/group/"
+  },
+  {
+    "name": "用户",
+    "icon": "fa fa-user",
+    "url": "/admin/auth/user/"
+  },
+  {
+    "name": "权限",
+    "icon": "fa fa-user",
+    "url": "/admin/auth/permission/"
+  },
+  {
+    "name": "日志记录",
+    "icon": "fa fa-user",
+    "url": "/admin/admin/logentry/"
+  },
+  {
+    "name": "修改密码",
+    "icon": "fa fa-user",
+    "url": "/admin/password_change/"
+  }
+]

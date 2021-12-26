@@ -1,0 +1,121 @@
+.home-body {
+  padding: 20px;
+  height: 100%;
+  overflow: auto;
+  margin-bottom: 20px;
+}
+.home-body .quick-wrap {
+  background-color: white;
+  border-radius: 5px;
+  border-width: 2px;
+  transition: all 0.2s;
+}
+.home-body .quick-wrap .icon {
+  background-color: white;
+}
+.home-body .quick-wrap .card-name {
+  font-weight: 300;
+  font-size: 14px;
+}
+.home-body .quick-wrap:hover {
+  border-color: #fff;
+  box-shadow: 0px 0px 10px rgba(51, 51, 51, 0.2);
+}
+.home-body:after {
+  display: block;
+  content: '';
+  clear: both;
+  float: none;
+}
+.card {
+  background-color: white;
+  border-radius: 5px;
+  border-width: 2px;
+}
+.card .title {
+  border-bottom: 1px solid #e8eaec;
+  padding: 14px 16px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  color: #17233d;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+.charts .col {
+  width: 25%;
+  float: left;
+}
+.charts .col .wrap {
+  margin: 10px;
+  background-color: white;
+}
+.charts .col .body {
+  padding: 10px;
+}
+.charts .col .data {
+  font-size: 30px;
+  margin: 10px auto;
+}
+.charts .col .bottom {
+  border-top: 1px solid #e8eaec;
+  padding-top: 10px;
+  color: #515a6e;
+  font-weight: 300;
+  margin: 10px;
+  padding-bottom: 10px;
+}
+.charts .col .body {
+  min-height: 100px;
+}
+.charts .col .title {
+  border-bottom: 1px solid #e8eaec;
+  padding: 14px 16px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  color: #17233d;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+.charts .col .title .date {
+  position: absolute;
+  right: 10px;
+  height: 22px;
+  line-height: 22px;
+  font-size: 12px;
+  vertical-align: middle;
+  opacity: 1;
+  cursor: pointer;
+  margin: 2px 4px 2px 0px;
+  padding: 0px 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e8eaec;
+  border-image: initial;
+  border-radius: 3px;
+  background: #f7f7f7;
+  overflow: hidden;
+}
+.charts:after {
+  display: block;
+  clear: both;
+  float: none;
+  content: '';
+}
+@media screen and (max-width: 1000px) {
+  .charts .col {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .charts .col {
+    width: 100%;
+  }
+}

@@ -1,0 +1,8 @@
+#Fofa API 配置项
+FOFA_EMAIL: ""
+FOFA_KEY: ""
+
+# CNAME黑名单 子域解析到CNAME黑名单即直接丢弃
+CNAME_BLACKLIST:
+  - nonexist.sdo.com
+  - shop.taobao.com

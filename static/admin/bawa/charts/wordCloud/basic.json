@@ -1,0 +1,912 @@
+[
+  {
+    "word": "G2Plot",
+    "weight": 12,
+    "id": 0
+  },
+  {
+    "word": "AntV",
+    "weight": 9,
+    "id": 1
+  },
+  {
+    "word": "F2",
+    "weight": 8,
+    "id": 2
+  },
+  {
+    "word": "G2",
+    "weight": 8,
+    "id": 3
+  },
+  {
+    "word": "G6",
+    "weight": 8,
+    "id": 4
+  },
+  {
+    "word": "DataSet",
+    "weight": 8,
+    "id": 5
+  },
+  {
+    "word": "墨者学院",
+    "weight": 8,
+    "id": 6
+  },
+  {
+    "word": "Analysis",
+    "weight": 6,
+    "id": 7
+  },
+  {
+    "word": "Data Mining",
+    "weight": 6,
+    "id": 8
+  },
+  {
+    "word": "Data Vis",
+    "weight": 6,
+    "id": 9
+  },
+  {
+    "word": "Design",
+    "weight": 6,
+    "id": 10
+  },
+  {
+    "word": "Grammar",
+    "weight": 6,
+    "id": 11
+  },
+  {
+    "word": "Graphics",
+    "weight": 6,
+    "id": 12
+  },
+  {
+    "word": "Graph",
+    "weight": 6,
+    "id": 13
+  },
+  {
+    "word": "Hierarchy",
+    "weight": 6,
+    "id": 14
+  },
+  {
+    "word": "Labeling",
+    "weight": 6,
+    "id": 15
+  },
+  {
+    "word": "Layout",
+    "weight": 6,
+    "id": 16
+  },
+  {
+    "word": "Quantitative",
+    "weight": 6,
+    "id": 17
+  },
+  {
+    "word": "Relation",
+    "weight": 6,
+    "id": 18
+  },
+  {
+    "word": "Statistics",
+    "weight": 6,
+    "id": 19
+  },
+  {
+    "word": "可视化",
+    "weight": 6,
+    "id": 20
+  },
+  {
+    "word": "数据",
+    "weight": 6,
+    "id": 21
+  },
+  {
+    "word": "数据可视化",
+    "weight": 6,
+    "id": 22
+  },
+  {
+    "word": "Arc Diagram",
+    "weight": 4,
+    "id": 23
+  },
+  {
+    "word": "Bar Chart",
+    "weight": 4,
+    "id": 24
+  },
+  {
+    "word": "Canvas",
+    "weight": 4,
+    "id": 25
+  },
+  {
+    "word": "Chart",
+    "weight": 4,
+    "id": 26
+  },
+  {
+    "word": "DAG",
+    "weight": 4,
+    "id": 27
+  },
+  {
+    "word": "DG",
+    "weight": 4,
+    "id": 28
+  },
+  {
+    "word": "Facet",
+    "weight": 4,
+    "id": 29
+  },
+  {
+    "word": "Geo",
+    "weight": 4,
+    "id": 30
+  },
+  {
+    "word": "Line",
+    "weight": 4,
+    "id": 31
+  },
+  {
+    "word": "MindMap",
+    "weight": 4,
+    "id": 32
+  },
+  {
+    "word": "Pie",
+    "weight": 4,
+    "id": 33
+  },
+  {
+    "word": "Pizza Chart",
+    "weight": 4,
+    "id": 34
+  },
+  {
+    "word": "Punch Card",
+    "weight": 4,
+    "id": 35
+  },
+  {
+    "word": "SVG",
+    "weight": 4,
+    "id": 36
+  },
+  {
+    "word": "Sunburst",
+    "weight": 4,
+    "id": 37
+  },
+  {
+    "word": "Tree",
+    "weight": 4,
+    "id": 38
+  },
+  {
+    "word": "UML",
+    "weight": 4,
+    "id": 39
+  },
+  {
+    "word": "Chart",
+    "weight": 3,
+    "id": 40
+  },
+  {
+    "word": "View",
+    "weight": 3,
+    "id": 41
+  },
+  {
+    "word": "Geom",
+    "weight": 3,
+    "id": 42
+  },
+  {
+    "word": "Shape",
+    "weight": 3,
+    "id": 43
+  },
+  {
+    "word": "Scale",
+    "weight": 3,
+    "id": 44
+  },
+  {
+    "word": "Animate",
+    "weight": 3,
+    "id": 45
+  },
+  {
+    "word": "Global",
+    "weight": 3,
+    "id": 46
+  },
+  {
+    "word": "Slider",
+    "weight": 3,
+    "id": 47
+  },
+  {
+    "word": "Connector",
+    "weight": 3,
+    "id": 48
+  },
+  {
+    "word": "Transform",
+    "weight": 3,
+    "id": 49
+  },
+  {
+    "word": "Util",
+    "weight": 3,
+    "id": 50
+  },
+  {
+    "word": "DomUtil",
+    "weight": 3,
+    "id": 51
+  },
+  {
+    "word": "MatrixUtil",
+    "weight": 3,
+    "id": 52
+  },
+  {
+    "word": "PathUtil",
+    "weight": 3,
+    "id": 53
+  },
+  {
+    "word": "G",
+    "weight": 3,
+    "id": 54
+  },
+  {
+    "word": "2D",
+    "weight": 3,
+    "id": 55
+  },
+  {
+    "word": "3D",
+    "weight": 3,
+    "id": 56
+  },
+  {
+    "word": "Line",
+    "weight": 3,
+    "id": 57
+  },
+  {
+    "word": "Area",
+    "weight": 3,
+    "id": 58
+  },
+  {
+    "word": "Interval",
+    "weight": 3,
+    "id": 59
+  },
+  {
+    "word": "Schema",
+    "weight": 3,
+    "id": 60
+  },
+  {
+    "word": "Edge",
+    "weight": 3,
+    "id": 61
+  },
+  {
+    "word": "Polygon",
+    "weight": 3,
+    "id": 62
+  },
+  {
+    "word": "Heatmap",
+    "weight": 3,
+    "id": 63
+  },
+  {
+    "word": "Render",
+    "weight": 3,
+    "id": 64
+  },
+  {
+    "word": "Tooltip",
+    "weight": 3,
+    "id": 65
+  },
+  {
+    "word": "Axis",
+    "weight": 3,
+    "id": 66
+  },
+  {
+    "word": "Guide",
+    "weight": 3,
+    "id": 67
+  },
+  {
+    "word": "Coord",
+    "weight": 3,
+    "id": 68
+  },
+  {
+    "word": "Legend",
+    "weight": 3,
+    "id": 69
+  },
+  {
+    "word": "Path",
+    "weight": 3,
+    "id": 70
+  },
+  {
+    "word": "Helix",
+    "weight": 3,
+    "id": 71
+  },
+  {
+    "word": "Theta",
+    "weight": 3,
+    "id": 72
+  },
+  {
+    "word": "Rect",
+    "weight": 3,
+    "id": 73
+  },
+  {
+    "word": "Polar",
+    "weight": 3,
+    "id": 74
+  },
+  {
+    "word": "Dsv",
+    "weight": 3,
+    "id": 75
+  },
+  {
+    "word": "Csv",
+    "weight": 3,
+    "id": 76
+  },
+  {
+    "word": "Tsv",
+    "weight": 3,
+    "id": 77
+  },
+  {
+    "word": "GeoJSON",
+    "weight": 3,
+    "id": 78
+  },
+  {
+    "word": "TopoJSON",
+    "weight": 3,
+    "id": 79
+  },
+  {
+    "word": "Filter",
+    "weight": 3,
+    "id": 80
+  },
+  {
+    "word": "Map",
+    "weight": 3,
+    "id": 81
+  },
+  {
+    "word": "Pick",
+    "weight": 3,
+    "id": 82
+  },
+  {
+    "word": "Rename",
+    "weight": 3,
+    "id": 83
+  },
+  {
+    "word": "Filter",
+    "weight": 3,
+    "id": 84
+  },
+  {
+    "word": "Map",
+    "weight": 3,
+    "id": 85
+  },
+  {
+    "word": "Pick",
+    "weight": 3,
+    "id": 86
+  },
+  {
+    "word": "Rename",
+    "weight": 3,
+    "id": 87
+  },
+  {
+    "word": "Reverse",
+    "weight": 3,
+    "id": 88
+  },
+  {
+    "word": "sort",
+    "weight": 3,
+    "id": 89
+  },
+  {
+    "word": "Subset",
+    "weight": 3,
+    "id": 90
+  },
+  {
+    "word": "Partition",
+    "weight": 3,
+    "id": 91
+  },
+  {
+    "word": "Imputation",
+    "weight": 3,
+    "id": 92
+  },
+  {
+    "word": "Fold",
+    "weight": 3,
+    "id": 93
+  },
+  {
+    "word": "Aggregate",
+    "weight": 3,
+    "id": 94
+  },
+  {
+    "word": "Proportion",
+    "weight": 3,
+    "id": 95
+  },
+  {
+    "word": "Histogram",
+    "weight": 3,
+    "id": 96
+  },
+  {
+    "word": "Quantile",
+    "weight": 3,
+    "id": 97
+  },
+  {
+    "word": "Treemap",
+    "weight": 3,
+    "id": 98
+  },
+  {
+    "word": "Hexagon",
+    "weight": 3,
+    "id": 99
+  },
+  {
+    "word": "Binning",
+    "weight": 3,
+    "id": 100
+  },
+  {
+    "word": "kernel",
+    "weight": 3,
+    "id": 101
+  },
+  {
+    "word": "Regression",
+    "weight": 3,
+    "id": 102
+  },
+  {
+    "word": "Density",
+    "weight": 3,
+    "id": 103
+  },
+  {
+    "word": "Sankey",
+    "weight": 3,
+    "id": 104
+  },
+  {
+    "word": "Voronoi",
+    "weight": 3,
+    "id": 105
+  },
+  {
+    "word": "Projection",
+    "weight": 3,
+    "id": 106
+  },
+  {
+    "word": "Centroid",
+    "weight": 3,
+    "id": 107
+  },
+  {
+    "word": "H5",
+    "weight": 3,
+    "id": 108
+  },
+  {
+    "word": "Mobile",
+    "weight": 3,
+    "id": 109
+  },
+  {
+    "word": "K线图",
+    "weight": 3,
+    "id": 110
+  },
+  {
+    "word": "关系图",
+    "weight": 3,
+    "id": 111
+  },
+  {
+    "word": "烛形图",
+    "weight": 3,
+    "id": 112
+  },
+  {
+    "word": "股票图",
+    "weight": 3,
+    "id": 113
+  },
+  {
+    "word": "直方图",
+    "weight": 3,
+    "id": 114
+  },
+  {
+    "word": "金字塔图",
+    "weight": 3,
+    "id": 115
+  },
+  {
+    "word": "分面",
+    "weight": 3,
+    "id": 116
+  },
+  {
+    "word": "南丁格尔玫瑰图",
+    "weight": 3,
+    "id": 117
+  },
+  {
+    "word": "饼图",
+    "weight": 3,
+    "id": 118
+  },
+  {
+    "word": "线图",
+    "weight": 3,
+    "id": 119
+  },
+  {
+    "word": "点图",
+    "weight": 3,
+    "id": 120
+  },
+  {
+    "word": "散点图",
+    "weight": 3,
+    "id": 121
+  },
+  {
+    "word": "子弹图",
+    "weight": 3,
+    "id": 122
+  },
+  {
+    "word": "柱状图",
+    "weight": 3,
+    "id": 123
+  },
+  {
+    "word": "仪表盘",
+    "weight": 3,
+    "id": 124
+  },
+  {
+    "word": "气泡图",
+    "weight": 3,
+    "id": 125
+  },
+  {
+    "word": "漏斗图",
+    "weight": 3,
+    "id": 126
+  },
+  {
+    "word": "热力图",
+    "weight": 3,
+    "id": 127
+  },
+  {
+    "word": "玉玦图",
+    "weight": 3,
+    "id": 128
+  },
+  {
+    "word": "直方图",
+    "weight": 3,
+    "id": 129
+  },
+  {
+    "word": "矩形树图",
+    "weight": 3,
+    "id": 130
+  },
+  {
+    "word": "箱形图",
+    "weight": 3,
+    "id": 131
+  },
+  {
+    "word": "色块图",
+    "weight": 3,
+    "id": 132
+  },
+  {
+    "word": "螺旋图",
+    "weight": 3,
+    "id": 133
+  },
+  {
+    "word": "词云",
+    "weight": 3,
+    "id": 134
+  },
+  {
+    "word": "词云图",
+    "weight": 3,
+    "id": 135
+  },
+  {
+    "word": "雷达图",
+    "weight": 3,
+    "id": 136
+  },
+  {
+    "word": "面积图",
+    "weight": 3,
+    "id": 137
+  },
+  {
+    "word": "马赛克图",
+    "weight": 3,
+    "id": 138
+  },
+  {
+    "word": "盒须图",
+    "weight": 3,
+    "id": 139
+  },
+  {
+    "word": "坐标轴",
+    "weight": 3,
+    "id": 140
+  },
+  {
+    "word": "",
+    "weight": 3,
+    "id": 141
+  },
+  {
+    "word": "Jacques Bertin",
+    "weight": 3,
+    "id": 142
+  },
+  {
+    "word": "Leland Wilkinson",
+    "weight": 3,
+    "id": 143
+  },
+  {
+    "word": "William Playfair",
+    "weight": 3,
+    "id": 144
+  },
+  {
+    "word": "关联",
+    "weight": 3,
+    "id": 145
+  },
+  {
+    "word": "分布",
+    "weight": 3,
+    "id": 146
+  },
+  {
+    "word": "区间",
+    "weight": 3,
+    "id": 147
+  },
+  {
+    "word": "占比",
+    "weight": 3,
+    "id": 148
+  },
+  {
+    "word": "地图",
+    "weight": 3,
+    "id": 149
+  },
+  {
+    "word": "时间",
+    "weight": 3,
+    "id": 150
+  },
+  {
+    "word": "比较",
+    "weight": 3,
+    "id": 151
+  },
+  {
+    "word": "流程",
+    "weight": 3,
+    "id": 152
+  },
+  {
+    "word": "趋势",
+    "weight": 3,
+    "id": 153
+  },
+  {
+    "word": "亦叶",
+    "weight": 2,
+    "id": 154
+  },
+  {
+    "word": "再飞",
+    "weight": 2,
+    "id": 155
+  },
+  {
+    "word": "完白",
+    "weight": 2,
+    "id": 156
+  },
+  {
+    "word": "巴思",
+    "weight": 2,
+    "id": 157
+  },
+  {
+    "word": "张初尘",
+    "weight": 2,
+    "id": 158
+  },
+  {
+    "word": "御术",
+    "weight": 2,
+    "id": 159
+  },
+  {
+    "word": "有田",
+    "weight": 2,
+    "id": 160
+  },
+  {
+    "word": "沉鱼",
+    "weight": 2,
+    "id": 161
+  },
+  {
+    "word": "玉伯",
+    "weight": 2,
+    "id": 162
+  },
+  {
+    "word": "画康",
+    "weight": 2,
+    "id": 163
+  },
+  {
+    "word": "祯逸",
+    "weight": 2,
+    "id": 164
+  },
+  {
+    "word": "绝云",
+    "weight": 2,
+    "id": 165
+  },
+  {
+    "word": "罗宪",
+    "weight": 2,
+    "id": 166
+  },
+  {
+    "word": "萧庆",
+    "weight": 2,
+    "id": 167
+  },
+  {
+    "word": "哦豁",
+    "weight": 2,
+    "id": 168
+  },
+  {
+    "word": "逍为",
+    "weight": 2,
+    "id": 169
+  },
+  {
+    "word": "翎刀",
+    "weight": 2,
+    "id": 170
+  },
+  {
+    "word": "陆沉",
+    "weight": 2,
+    "id": 171
+  },
+  {
+    "word": "顾倾",
+    "weight": 2,
+    "id": 172
+  },
+  {
+    "word": "Domo",
+    "weight": 2,
+    "id": 173
+  },
+  {
+    "word": "GPL",
+    "weight": 2,
+    "id": 174
+  },
+  {
+    "word": "PAI",
+    "weight": 2,
+    "id": 175
+  },
+  {
+    "word": "SPSS",
+    "weight": 2,
+    "id": 176
+  },
+  {
+    "word": "SYSTAT",
+    "weight": 2,
+    "id": 177
+  },
+  {
+    "word": "Tableau",
+    "weight": 2,
+    "id": 178
+  },
+  {
+    "word": "D3",
+    "weight": 2,
+    "id": 179
+  },
+  {
+    "word": "Vega",
+    "weight": 2,
+    "id": 180
+  },
+  {
+    "word": "统计图表",
+    "weight": 2,
+    "id": 181
+  }
+]

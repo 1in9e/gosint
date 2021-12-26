@@ -1,0 +1,14 @@
+version: "2"
+services:
+  gosint_client:
+    build: .
+    environment:
+      DEBUG: 'False'
+      BROKER: 'amqp://gosintuser:gosintpass@8.8.8.8:25672/gosint'
+      BACKEND: 'redis://:gosintpass@8.8.8.8:26379/2'
+      SERVER_URL: 'http://8.8.8.8:8001'
+      TZ: Asia/Shanghai
+      C_FORCE_ROOT: 'true'
+    restart: always
+    volumes:
+      - ./:/app

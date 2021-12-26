@@ -1,0 +1,50 @@
+{
+  "title": {
+    "text": "瀑布图标题",
+    "visible": true
+  },
+  "description": {
+    "text": "瀑布图描述",
+    "visible": true
+  },
+  "xField": "type",
+  "yField": "money",
+  "data": [
+    {
+      "type": "日用品",
+      "money": 120
+    },
+    {
+      "type": "伙食费",
+      "money": 900
+    },
+    {
+      "type": "交通费",
+      "money": 200
+    },
+    {
+      "type": "水电费",
+      "money": 300
+    },
+    {
+      "type": "房租",
+      "money": 1200
+    },
+    {
+      "type": "商场消费",
+      "money": 1000
+    },
+    {
+      "type": "应酬红包",
+      "money": -2000
+    }
+  ],
+  "meta": {
+    "type": {
+      "alias": "类别aa"
+    },
+    "money": {
+      "alias": "金额"
+    }
+  }
+}

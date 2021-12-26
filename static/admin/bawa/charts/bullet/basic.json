@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "title": "满意度",
+      "measures": [
+        83
+      ],
+      "targets": [
+        90
+      ]
+    }
+  ],
+  "rangeMax": 100
+}

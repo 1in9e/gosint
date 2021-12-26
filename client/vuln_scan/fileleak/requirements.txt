@@ -1,0 +1,6 @@
+celery
+redis
+requests
+tld
+urllib3
+bs4

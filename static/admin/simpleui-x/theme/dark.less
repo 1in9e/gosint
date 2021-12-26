@@ -1,0 +1,167 @@
+
+@bg: #161a2e;
+@bg2: #242b43;
+
+@fontColor: rgba(#fff, 0.7);
+
+//@borderColor: #101426;
+@borderColor: #1f222e;
+
+@important: #36f;
+
+table {
+  color: @fontColor;
+}
+
+:root {
+  --primary: inherit;
+  --primary-fg: inherit;
+  --body-fg: @fontColor!important;
+  --body-bg: inherit;
+  --body-quiet-color: inherit;
+  --body-loud-color: inherit;
+  --breadcrumbs-link-fg: inherit;
+  --breadcrumbs-bg: inherit;
+  --link-fg: inherit;
+  --link-hover-color: inherit;
+  --link-selected-fg: #FFF;
+  --hairline-color: inherit;
+  --border-color: #ccc;
+  --error-fg: inherit;
+  --message-success-bg: inherit;
+  --message-warning-bg: inherit;
+  --message-error-bg: inherit;
+  --darkened-bg: inherit;
+  --selected-bg: inherit;
+  --selected-row: inherit;
+  --close-button-bg: inherit;
+  --close-button-hover-bg: inherit;
+}
+
+.el-table__row--striped {
+  .el-table__cell {
+    background: @bg !important;
+  }
+}
+
+.hover-row {
+  .el-table__cell {
+    background: rgba(@bg, 0.8) !important;
+  }
+}
+
+
+.el-upload-dragger, .el-upload--picture-card, .el-upload-list__item-actions, .el-upload-list__item {
+  background-color: #1a2036!important;
+}
+
+body, html {
+  background: @bg;
+}
+
+.navbar, .el-main {
+  background: @bg !important;
+}
+
+.el-main {
+  padding-top: 0px !important;
+}
+
+#content, input, #container, .panel-body, .el-tab-pane {
+  background: @bg2 !important;
+}
+
+#main .el-tabs__item {
+  background-color: inherit !important;
+}
+
+/*
+滚动条
+*/
+* .el-icon-arrow-right {
+  display: none;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 5px rgba(123, 123, 123, 0.2);
+  background: #7d7d7d;
+}
+
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.el-button, .el-button:hover {
+  color: @fontColor;
+}
+
+.home-body {
+  background-color: @bg !important;
+
+  .quick-wrap {
+    background-color: @bg2 !important;
+    border: 1px solid @borderColor;
+    border-radius: 5px;
+    border-width: 1px !important;
+
+    &:hover {
+      border-color: @important !important;
+    }
+
+    a {
+      color: @fontColor !important;
+    }
+
+    .icon {
+      border-radius: 5px;
+      background-color: @bg2 !important;
+    }
+  }
+}
+
+.search-input {
+  width: 180px;
+}
+
+.el-loading-mask {
+  background-color: rgba(@bg, 0.7);
+}
+
+.el-picker-panel {
+  .is-left, .is-right, .el-date-range-picker__time-header, .el-picker-panel__footer {
+    border-color: @borderColor !important;
+  }
+}
+
+.menu {
+  background-color: @bg !important;
+
+  .el-submenu__title {
+    background-color: @bg2 !important;
+
+    &:hover {
+      background-color: rgba(@bg2, 0.7) !important;
+    }
+  }
+
+  .el-menu-item {
+
+    background-color: @bg !important;
+  }
+}
+
+.logo-wrap {
+    color: #c79c6d !important;
+    padding-left: 20px;
+    text-align: center;
+}
+.el-dropdown{
+  color:@fontColor!important;
+}
