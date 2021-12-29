@@ -41,17 +41,23 @@ gosint/client/config.yaml
 ...
 
 ### 生产环境版
+_注意：请在生产环境下替换为强密码_
 ```
-默认情况下，gosint中间件所使用账号密码分别为gosintuser、gosintpass，Web应用账号密码分别为gosint、GosintPassword
-请在生产环境下替换为强密码
+默认情况下，gosint中间件所使用账号密码分别为gosintuser、gosintpass
 # 中间件账号密码需替换文件:(建议全局关键字搜索替换)
 gosint/docker-compose.yml
 gosint/client/docker-compose.yml
 gosint/gosint/setting-prod.py
 gosint/supervisor/supervisord.conf
 
-# Web应用账号密码需替换文件：
-gosint/docker-entrypoint.sh
+# Web应用账号密码需替换文件：（Web应用账号密码默认分别为gosint、gosint）
+gosint/docker-entrypoint.sh: 如下分别对应用户名、邮箱、密码，改为自己的即可
+python manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('gosint', 'root@ohlinge.cn', 'gosint') if not User.objects.filter(username='gosint').exists() else 0"
+```
+##### 关于celery监控
+新版本默认开启，需在gosint/setting-prod.py 252行ip改为自己服务器ip即可:
+```python
+'url': 'http://127.0.0.1:5555/goflower/',
 ```
 
 #### 单一服务器部署
@@ -175,6 +181,15 @@ celery flower -A gosint
 ![](thirdparty/5.png)
 
 ## Version
+### V1.0.1
+- 更新部分issue反馈问题
+  - client无限重启问题
+  - celery监控默认未开启问题
+  - README修改用户名密码强提示问题
+- fix issue:
+  - https://github.com/1in9e/gosint/issues/3
+  - https://github.com/1in9e/gosint/issues/8
+  - https://github.com/1in9e/gosint/issues/4
 ### V1.0.0
 - open source
 - from gosint_priv to gosint

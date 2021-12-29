@@ -72,6 +72,9 @@ if $rad2xray; then
 	nohup celery -A rad2xray worker -l info -Q rad2xray -c 1 -n rad2xray_$RANDOM --logfile=/app/logs/rad2xray_celery.log >/dev/null 2>&1 &
 fi
 
+# mkdir logs fixbug: https://github.com/1in9e/gosint/issues/3
+mkdir /app/logs
+
 # vuln_scan: xray passive_scan (jsfinder or  fileleak or rad2xray)
 if $rad2xray || $jsfinder || $fileleak; then
   cd /app/vuln_scan/rad2xray/tools/
