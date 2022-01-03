@@ -247,10 +247,6 @@ SIMPLEUI_CONFIG = {
         'icon': 'fab fa-btc',
         'models': [
             {
-            'name': '日志记录',
-            'url': 'admin/logentry/',
-            'icon': 'fas fa-mitten'
-            },{
             'name': 'Celery监控',
             'url': 'http://127.0.0.1:5555/',
             'icon': 'fas fa-skiing'

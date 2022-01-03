@@ -59,6 +59,14 @@ python manage.py shell -c "from django.contrib.auth.models import User; User.obj
 ```python
 'url': 'http://127.0.0.1:5555/goflower/',
 ```
+celery监控暂时采用flower的形式，通过nginx开放了5555端口到外部，故设置了账号密码认证，此处建议修改为强口令,
+默认口令为：go gosint,
+
+详见gosint/supervisor/supervisord.conf (line 38)
+```
+command=celery flower --broker=amqp://gosintuser:gosintpass@rabbitmq:5672/gosint -A gosint --url_prefix=goflower --basic_auth=go:gosint
+```
+
 
 #### 单一服务器部署
 生产环境搭建，采取docker化部署的方案

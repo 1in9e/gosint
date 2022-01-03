@@ -73,7 +73,7 @@ if $rad2xray; then
 fi
 
 # mkdir logs fixbug: https://github.com/1in9e/gosint/issues/3
-mkdir /app/logs
+#mkdir /app/logs
 
 # vuln_scan: xray passive_scan (jsfinder or  fileleak or rad2xray)
 if $rad2xray || $jsfinder || $fileleak; then

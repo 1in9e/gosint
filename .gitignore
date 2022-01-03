@@ -121,11 +121,10 @@ mysql/data
 mysql/log
 rabbitmq
 redis
-clients/subdomains/libs/subDomainsBrute/tmp/*
 .DS_Store
 supervisord.log
 supervisord.pid
-logs
+*.log
 
 # my tmp dir
 /tmp/
