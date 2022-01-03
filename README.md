@@ -189,6 +189,10 @@ celery flower -A gosint
 ![](thirdparty/5.png)
 
 ## Version
+### V1.0.2
+- 更新说明部分issue反馈问题
+  - https://github.com/1in9e/gosint/issues/14
+  - https://github.com/1in9e/gosint/issues/13
 ### V1.0.1
 - 更新部分issue反馈问题
   - client无限重启问题
