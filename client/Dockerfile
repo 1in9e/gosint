@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3.8-alpine3.13
 
 LABEL maintainer="_lin9e <lin9e@qq.com>"
 
@@ -10,6 +10,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev \
     linux-headers pcre-dev libcap libcap-dev libpcap libpcap-dev \
     nmap libxml2 libxml2-dev libxslt-dev \
+    xvfb-run chromium chromium-chromedriver \
     && rm -rf /var/cache/apk/*
 
 # timezone
@@ -20,9 +21,6 @@ RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 
 RUN mkdir /app
 WORKDIR /app
-
-COPY ./thirdparty/chromium-91.0.4472.164-r0.apk /tmp
-RUN apk add --allow-untrusted /tmp/chromium-91.0.4472.164-r0.apk
 
 ADD requirements.txt /app/requirements.txt
 RUN python -m pip install -r requirements.txt -i https://pypi.douban.com/simple
